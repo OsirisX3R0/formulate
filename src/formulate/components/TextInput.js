@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { FormContext } from '../context/FormContext'
 
-const TextInput = ({ name, value, className, onChange }) => {
-    let inputProps = { name, value, className }
+const TextInput = ({ type, name, value, className, onChange }) => {
+    let inputProps = { type, name, value, className }
     const { onInputUpdate } = useContext(FormContext)
     const [inputValue, setInputValue] = useState('')
 
@@ -19,7 +19,7 @@ const TextInput = ({ name, value, className, onChange }) => {
     }
 
     return (
-        <input type='text' {...inputProps} value={inputValue} onChange={onValueChange} />
+        <input {...inputProps} value={inputValue} onChange={onValueChange} />
     )
 }
 
