@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
-import Form, { TextInput, TextArea } from './formulate';
+import Form, { TextInput, TextArea, SelectInput } from './formulate';
 
 function App() {
+  const [options, setOptions] = useState([
+    { value: 1, text: 'Option One' },
+    { value: 2, text: 'Option Two' },
+    { value: 3, text: 'Option Three' },
+    { value: 4, text: 'Option Four' },
+    { value: 5, text: 'Option Five' }
+  ])
   return (
     <div className='container'>
       <h2>Formulate</h2>
@@ -12,6 +19,7 @@ function App() {
         <TextInput type='date' name='date' value='' className='input' />
         <TextInput type='color' name='color' value='' className='input' />
         <TextArea name='message' value='' className='input' />
+        <SelectInput name='option' value={[]} options={options} className='input' />
         <button type='submit'>Submit</button>
       </Form>
     </div>
