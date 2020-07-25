@@ -21,6 +21,7 @@ export const Form = ({ onSubmit, children }) => {
 
     return (
         <FormContext.Provider value={{
+            formData,
             onInputUpdate
         }}> 
             <form onSubmit={onFormSubmit}>
