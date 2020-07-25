@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
-import Form, { TextInput } from './formulate';
+import Form, { TextInput, TextArea } from './formulate';
 
 function App() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
   return (
     <div className='container'>
       <h2>Formulate</h2>
       <Form>
-        <TextInput name='name' value={name} className='input' onChange={(e) => setName(e.target.value)} />
-        <TextInput name='email' value={email} className='input' onChange={(e) => setEmail(e.target.value)} />
-        <TextInput name='phone' value={phone} className='input' onChange={(e) => setPhone(e.target.value)} />
+        <TextInput name='name' value='' className='input' />
+        <TextInput name='email' value='' className='input' />
+        <TextInput name='phone' value='' className='input' />
+        <TextArea name='message' value='' className='input' />
       </Form>
     </div>
   );
