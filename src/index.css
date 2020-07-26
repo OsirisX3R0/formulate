@@ -26,6 +26,10 @@ textarea.input {
   resize: none;
 }
 
+.check {
+  display: block;
+}
+
 button {
   background-color: cadetblue;
   color: #f5f5f5;

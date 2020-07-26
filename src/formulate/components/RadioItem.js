@@ -5,22 +5,22 @@ import { FormContext } from '../context/FormContext'
 const RadioItem = ({ value, label }) => {
     const { onInputUpdate } = useContext(FormContext)
     const {  radioProps, setRadioValue } = useContext(RadioContext)
-
+    const { name, className } = radioProps
     const onInputSelect = e => {
         setRadioValue(e.target.value)
         onInputUpdate(radioProps.name, e.target.value)
     }
 
     return (
-        <>
+        <span className={className}>
             <input 
                 type='radio' 
-                {...radioProps} 
+                name={name} 
                 value={value} 
                 onClick={onInputSelect} 
             />
             {label}
-        </>
+        </span>
     )
 }
 
