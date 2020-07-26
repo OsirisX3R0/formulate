@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Form, { TextInput, TextArea, SelectInput } from './formulate';
+import Form, { TextInput, TextArea, SelectInput, RadioGroup, RadioItem } from './formulate';
 
 function App() {
   const [options, setOptions] = useState([
@@ -21,6 +21,10 @@ function App() {
         <TextArea name='message' className='input' />
         <SelectInput name='option' options={options} className='input' />
         <SelectInput name='options' options={options} className='input' multiple />
+        <RadioGroup name='smoker'>
+          <RadioItem value='Yes' label='Yes' />
+          <RadioItem value='No' label='No' />
+        </RadioGroup>
         <button type='submit'>Submit</button>
       </Form>
     </div>
