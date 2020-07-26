@@ -1,9 +1,14 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 export const FormContext = createContext()
 
-export const Form = ({ onSubmit, children }) => {
+export const Form = ({ onSubmit, onFormChange, children }) => {
     const [formData, setFormData] = useState({})
+
+    useEffect(() => {
+        if (formData !== undefined)
+            onFormChange(formData)
+    }, [formData])
 
     const onFormSubmit = e => {
         e.preventDefault()

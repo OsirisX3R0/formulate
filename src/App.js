@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Form, { TextInput, TextArea, SelectInput, RadioGroup, RadioItem, CheckBoxGroup, CheckBox, CheckItem } from './formulate';
 
 function App() {
+  const [testData, setTestData] = useState({})
   const [options, setOptions] = useState([
     { value: 1, text: 'Option One' },
     { value: 2, text: 'Option Two' },
@@ -12,7 +13,10 @@ function App() {
   return (
     <div className='container'>
       <h2>Formulate</h2>
-      <Form onSubmit={data => console.log(data)}>
+      <Form 
+        onSubmit={data => console.log(data)}
+        onFormChange={data => setTestData(data)}
+      >
         <TextInput type='text' name='name' className='input' />
         <TextInput type='text' name='email' className='input' />
         <TextInput type='number' name='phone' className='input' />
