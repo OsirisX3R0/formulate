@@ -7,7 +7,8 @@ const TextArea = ({ name, value, className, onChange }) => {
     const [inputValue, setInputValue] = useState('')
 
     useEffect(() => {
-        setInputValue(value)
+        if(value !== undefined)
+            setInputValue(value)
     }, [value])
 
     const onValueChange = e => {

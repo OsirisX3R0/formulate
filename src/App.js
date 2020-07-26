@@ -13,12 +13,12 @@ function App() {
     <div className='container'>
       <h2>Formulate</h2>
       <Form onSubmit={data => console.log(data)}>
-        <TextInput type='text' name='name' value='' className='input' />
-        <TextInput type='text' name='email' value='' className='input' />
-        <TextInput type='number' name='phone' value='' className='input' />
-        <TextInput type='date' name='date' value='' className='input' />
+        <TextInput type='text' name='name' className='input' />
+        <TextInput type='text' name='email' className='input' />
+        <TextInput type='number' name='phone' className='input' />
+        <TextInput type='date' name='date' className='input' />
         <TextInput type='color' name='color' value='#666666' className='input' />
-        <TextArea name='message' value='' className='input' />
+        <TextArea name='message' className='input' />
         <SelectInput name='option' options={options} className='input' />
         <SelectInput name='options' options={options} className='input' multiple />
         <button type='submit'>Submit</button>
