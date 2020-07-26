@@ -1,21 +1,27 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { FormContext } from '../context/FormContext'
 
-const SelectInput = ({ type, name, value, className, onChange, options }) => {
-    let inputProps = { type, name, value, className }
+const SelectInput = ({ type, name, value, className, multiple, onChange, options }) => {
+    let inputProps = { type, name, value, className, multiple }
     const { onInputUpdate } = useContext(FormContext)
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState(multiple ? [] : '')
 
     useEffect(() => {
-        setInputValue(value)
+        if(value !== undefined)
+            setInputValue(value)
     }, [value])
 
     const onValueChange = e => {
+        let selected = inputValue
         let { name, value } = e.target
-
+        let newValue = multiple 
+            ? inputValue.some(v => v === value)
+                ? [...selected.filter(v => v !== value)]
+                : [...selected, value] 
+            : value
         if (onChange) onChange(e)
-        setInputValue(value)
-        onInputUpdate(name, value)
+        setInputValue(newValue)
+        onInputUpdate(name, newValue)
     }
 
     const selectOptions = options && options.map(o => (

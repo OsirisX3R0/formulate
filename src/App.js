@@ -17,9 +17,10 @@ function App() {
         <TextInput type='text' name='email' value='' className='input' />
         <TextInput type='number' name='phone' value='' className='input' />
         <TextInput type='date' name='date' value='' className='input' />
-        <TextInput type='color' name='color' value='' className='input' />
+        <TextInput type='color' name='color' value='#666666' className='input' />
         <TextArea name='message' value='' className='input' />
-        <SelectInput name='option' value={[]} options={options} className='input' />
+        <SelectInput name='option' options={options} className='input' />
+        <SelectInput name='options' options={options} className='input' multiple />
         <button type='submit'>Submit</button>
       </Form>
     </div>
