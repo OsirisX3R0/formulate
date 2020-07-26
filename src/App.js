@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Form, { TextInput, TextArea, SelectInput, RadioGroup, RadioItem, CheckBoxGroup, CheckBox, CheckItem } from './formulate';
+import Form, { TextInput, TextArea, SelectInput, RadioGroup, RadioItem, CheckBoxGroup, CheckBox, CheckItem, Option } from './formulate';
 
 function App() {
   const [testData, setTestData] = useState({})
@@ -23,8 +23,16 @@ function App() {
         <TextInput type='date' name='date' className='input' />
         <TextInput type='color' name='color' value='#666666' className='input' />
         <TextArea name='message' className='input' />
-        <SelectInput name='option' options={options} className='input' />
-        <SelectInput name='options' options={options} className='input' multiple />
+        <SelectInput name='option' className='input'>
+          {options.map(o => (
+            <Option value={o.value} key={o.value}>{o.text}</Option>
+          ))}
+        </SelectInput>
+        <SelectInput name='options' className='input' multiple>
+          {options.map(o => (
+            <Option value={o.value} key={o.value}>{o.text}</Option>
+          ))}
+        </SelectInput>
         <RadioGroup name='smoker' className='check'>
           <RadioItem value='Yes' label='Yes' />
           <RadioItem value='No' label='No' />
