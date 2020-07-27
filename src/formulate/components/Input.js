@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { FormContext } from '../context/FormContext'
 
-const TextInput = ({ type, name, value, className, onChange }) => {
+const Input = ({ type, name, value, className, onChange }) => {
     let inputProps = { type, name, value, className }
     const { onInputUpdate } = useContext(FormContext)
     const [inputValue, setInputValue] = useState(type === 'color' ? '#666666' : '')
@@ -24,4 +24,4 @@ const TextInput = ({ type, name, value, className, onChange }) => {
     )
 }
 
-export default TextInput
+export default Input

@@ -1,5 +1,5 @@
 import { Form } from "./context/FormContext"
-import TextInput from "./components/TextInput"
+import Input from "./components/Input"
 import TextArea from "./components/TextArea"
 import { SelectInput } from "./context/SelectContext"
 import Option from "./components/Option"
@@ -11,4 +11,4 @@ import CheckBox from "./components/CheckBox"
 
 export default Form
 
-export { TextInput, TextArea, SelectInput, Option, RadioGroup, RadioItem, CheckBoxGroup, CheckItem, CheckBox }
+export { Input, TextArea, SelectInput, Option, RadioGroup, RadioItem, CheckBoxGroup, CheckItem, CheckBox }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Form, { TextInput, TextArea, SelectInput, RadioGroup, RadioItem, CheckBoxGroup, CheckBox, CheckItem, Option } from './formulate';
+import Form, { Input, TextArea, SelectInput, RadioGroup, RadioItem, CheckBoxGroup, CheckBox, CheckItem, Option } from './formulate';
 
 function App() {
   const [testData, setTestData] = useState({})
@@ -17,11 +17,11 @@ function App() {
         onSubmit={data => console.log(data)}
         onFormChange={data => setTestData(data)}
       >
-        <TextInput type='text' name='name' className='input' />
-        <TextInput type='text' name='email' className='input' />
-        <TextInput type='number' name='phone' className='input' />
-        <TextInput type='date' name='date' className='input' />
-        <TextInput type='color' name='color' value='#666666' className='input' />
+        <Input type='text' name='name' className='input' />
+        <Input type='text' name='email' className='input' />
+        <Input type='number' name='phone' className='input' />
+        <Input type='date' name='date' className='input' />
+        <Input type='color' name='color' value='#666666' className='input' />
         <TextArea name='message' className='input' />
         <SelectInput name='option' className='input'>
           {options.map(o => (
@@ -44,6 +44,7 @@ function App() {
           <CheckItem label='Pizza' />
           <CheckItem label='Nachos' />
         </CheckBoxGroup>
+        <Input type='file' name='file' className='input' />
         <button type='submit'>Submit</button>
       </Form>
     </div>
