@@ -10,6 +10,7 @@ function App() {
     { value: 4, text: 'Option Four' },
     { value: 5, text: 'Option Five' }
   ])
+
   return (
     <div className='container'>
       <h2>Formulate</h2>
@@ -17,11 +18,11 @@ function App() {
         onSubmit={data => console.log(data)}
         onFormChange={data => setTestData(data)}
       >
-        <Input type='text' name='name' className='input' />
-        <Input type='text' name='email' className='input' />
-        <Input type='number' name='phone' className='input' />
+        <Input type='text' name='name' className='input' validate={{ required: true, minLength: 5, maxLength: 100 }} />
+        <Input type='email' name='email' className='input' validate={{ required: true }} />
+        <Input type='number' name='phone' className='input' validate={{ required: true, min: 3, max: 10, pattern: "^[2-9]\d{2}-\d{3}-\d{4}$" }} />
         <Input type='date' name='date' className='input' />
-        <Input type='color' name='color' value='#666666' className='input' />
+        <Input type='color' name='color' value='#666666' className='input' validate={{ oneOf: ['#ff0000', '#ffff00', '#0000ff']}} />
         <TextArea name='message' className='input' />
         <SelectInput name='option' className='input'>
           {options.map(o => (

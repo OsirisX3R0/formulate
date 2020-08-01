@@ -1,15 +1,40 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import { FormContext } from '../context/FormContext'
-
-const Input = ({ type, name, value, className, onChange }) => {
-    let inputProps = { type, name, value, className }
-    const { onInputUpdate } = useContext(FormContext)
-    const [inputValue, setInputValue] = useState(type === 'color' ? '#666666' : '')
+import setInputValidity from '../helpers/setInputValidity'
+//{ type, name, value, className, validate, onChange }
+const Input = (props) => {
+    let { validate, onChange, ...inputProps} = props
+    validate = validate || {}
+    let { required, pattern, min, max, minLength, maxLength, ...customValidators } = validate
+    let validators = { required, pattern, min, max, minLength, maxLength }
+    const { onInputUpdate, onValidityCheck } = useContext(FormContext)
+    const [inputValue, setInputValue] = useState(props.type === 'color' ? '#666666' : '')
+    const [valid, setValid] = useState(false)
+    const inputRef = useRef(null)
 
     useEffect(() => {
-        if(value !== undefined)
-            setInputValue(value)
-    }, [value])
+        setInputValidity(inputRef.current)
+    }, [])
+
+    useEffect(() => {
+        if(props.value !== undefined)
+            setInputValue(props.value)
+    }, [props.value])
+
+    useEffect(() => {
+        setInputValidity(inputRef.current)
+        onValidityCheck(props.name, inputRef.current.validity.valid)
+    }, [inputValue, props.name, onValidityCheck])
+
+    // useEffect(() => {
+    //     if (validators !== undefined) {
+    //         registerValidator(name, validate)
+    //         // setValidators(prevValidators => ([
+    //         //     ...prevValidators,
+    //         //     { name, validator: validate}
+    //         // ]))
+    //     }
+    // }, [validators])
 
     const onValueChange = e => {
         let { name, value } = e.target
@@ -20,7 +45,7 @@ const Input = ({ type, name, value, className, onChange }) => {
     }
 
     return (
-        <input {...inputProps} value={inputValue} onChange={onValueChange} />
+        <input {...inputProps} {...validators} value={inputValue} onChange={onValueChange} ref={inputRef} />
     )
 }
 
